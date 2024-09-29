@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    
+    {
+      "type": "java",
+      "name": "Spring Boot-FileprocessingApplication<fileprocessing>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.example.fileprocessing.FileprocessingApplication",
+      "projectName": "fileprocessing",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
