@@ -1,15 +1,10 @@
-def rootFolder = "backend/fileprocessing"
-def branchName = "main"
-def projectName = "fileprocessing"
-def dockerImageName = "fileprocessing"
-def githubdir="https://github.com/arribajim/poc-fullstack.git"
 pipeline {
     agent any
     
     environment{    
         GIT_CREDENTIALS="jenkins-dev-arribajim"
         ROOT_FOLDER="backend/fileprocessing"
-        DOCKER_IMAGE_NAME="FILEPROCESSING-BAME"
+        DOCKER_IMAGE_NAME="fileprocessing"
     }
 
 
