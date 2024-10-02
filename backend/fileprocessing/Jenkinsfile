@@ -31,7 +31,7 @@ pipeline {
     stage("docker build image"){
       steps{
         script{
-          def dockerImage = docker.build("${DOCKER_REPO}${DOCKER_IMAGE_NAME}","-f ${ROOT_FOLDER}/Dockerfile .") 
+          def dockerImage = docker.build("${DOCKER_REPO}/${DOCKER_IMAGE_NAME}","-f ${ROOT_FOLDER}/Dockerfile .") 
           dockerImage.push()
         }
       }
