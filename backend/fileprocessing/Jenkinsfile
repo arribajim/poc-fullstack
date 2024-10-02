@@ -31,7 +31,7 @@ pipeline {
       steps{
         script{
           sh '''
-            ${ROOT_FOLDER}
+            cd ${ROOT_FOLDER}
             '''
           def dockerImage = docker.build "${DOCKER_IMAGE_NAME}"
           dockerImage.push()
