@@ -2,6 +2,7 @@ def rootFolder = "backend/fileprocessing"
 def branchName = "main"
 def projectName = "fileprocessing"
 def dockerImageName = "fileprocessing"
+def githubdir="https://github.com/arribajim/poc-fullstack.git"
 pipeline {
     agent any
     
@@ -18,6 +19,16 @@ pipeline {
           sh "mvn -version"
           sh "docker --version"
           sh "kubectl version"
+
+      }
+    }
+    stage("maven clean"){
+      steps{
+          sh '''
+            cd {rootFolder}
+            export $(cat .env | xargs)
+            mvn clean
+            '''
       }
     }
   }
