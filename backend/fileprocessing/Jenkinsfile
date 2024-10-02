@@ -8,6 +8,7 @@ pipeline {
     
     environment{    
         GIT_CREDENTIALS="jenkins-dev-arribajim"
+        ROOT_FOLDER="backend/fileprocessing"
     }
 
 
@@ -25,7 +26,7 @@ pipeline {
     stage("maven clean"){
       steps{
           sh '''
-            cd ${rootFolder}
+            cd ${ROOT_FOLDER}
             export $(cat .env | xargs)
             mvn clean
             '''
