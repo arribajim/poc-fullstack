@@ -23,7 +23,6 @@ pipeline {
       steps{
           sh '''
             cd ${ROOT_FOLDER}
-            export $(cat .env | xargs)
             mvn -DskipTests=true  clean package
             '''
       }
@@ -31,9 +30,10 @@ pipeline {
     stage("docker build image"){
       steps{
         script{
-          cd ${ROOT_FOLDER}
-          export $(cat .env | xargs)
-          def dockerImage= docker.build "${DOCKER_IMAGE_NAME}"
+          sh '''
+            ${ROOT_FOLDER}
+            '''
+          def dockerImage = docker.build "${DOCKER_IMAGE_NAME}"
           dockerImage.push()
         }
       }
