@@ -30,10 +30,7 @@ pipeline {
     stage("docker build image"){
       steps{
         script{
-          sh '''
-            cd ${ROOT_FOLDER}
-            '''
-          def dockerImage = docker.build "${DOCKER_IMAGE_NAME}"
+          def dockerImage = docker.build "${ROOT_FOLDER}${DOCKER_IMAGE_NAME}"
           dockerImage.push()
         }
       }
