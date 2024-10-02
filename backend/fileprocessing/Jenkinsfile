@@ -3,7 +3,7 @@ pipeline {
     
     environment{    
         GIT_CREDENTIALS="jenkins-dev-arribajim"
-        ROOT_FOLDER="backend/fileprocessing"
+        ROOT_FOLDER="backend/fileprocessing/"
         DOCKER_IMAGE_NAME="fileprocessing"
     }
 
@@ -30,16 +30,12 @@ pipeline {
     }
     stage("docker build image"){
       steps{
-          sh '''
-            cd ${ROOT_FOLDER}
-            export $(cat .env | xargs)
-            echo 'with def' ${fileprocessing}
-            echo ${DOCKER_IMAGE_NAME}
-            '''
-            script{
-              def dockerImage= docker.build "${DOCKER_IMAGE_NAME}"
-              dockerImage.push()
-            }
+        script{
+          cd ${ROOT_FOLDER}
+          export $(cat .env | xargs)
+          def dockerImage= docker.build "${DOCKER_IMAGE_NAME}"
+          dockerImage.push()
+        }
       }
     }
   }
