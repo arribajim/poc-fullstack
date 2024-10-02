@@ -25,7 +25,7 @@ pipeline {
     stage("maven clean"){
       steps{
           sh '''
-            cd {rootFolder}
+            cd ${rootFolder}
             export $(cat .env | xargs)
             mvn clean
             '''
