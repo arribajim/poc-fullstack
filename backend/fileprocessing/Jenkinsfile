@@ -1,0 +1,22 @@
+def rootFolder = "backend/FileUploadDownload"
+def branchName = "main"
+def projectName = "java-file-upload-api"
+pipeline {
+    agent any
+    
+    environment{    
+        
+    }
+
+
+  stages {
+    stage("Build") {
+      steps {
+        git url: 'https://github.com/arribajim/poc-fullstack'
+        withMaven {
+          sh "mvn clean verify"
+        } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports
+      }
+    }
+  }
+}
