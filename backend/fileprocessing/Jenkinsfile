@@ -36,5 +36,12 @@ pipeline {
         }
       }
     }
+    stage("k8s dev deployment apply"){
+      steps{
+        script{
+          sh "kubectl apply -f deployment.yaml"
+        }
+      }
+    }
   }
 }
