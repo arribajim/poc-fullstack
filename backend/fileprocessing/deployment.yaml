@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fileprocessing-api
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fileprocessing
+  template:
+    metadata:
+      labels:
+        app: fileprocessing
+    spec:
+      containers:
+        - name: fileprocessing
+          image: arribajim/fileprocessing:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: FILE_PATH
+              valueFrom:
+                secretKeyRef:
+                  name: fileprocessing-api-secret
+                  key: file_path
+            - name: API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: fileprocessing-api-secret
+                  key: api_url
+            - name: SERVER_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: fileprocessing-api-secret
+                  key: server_port
