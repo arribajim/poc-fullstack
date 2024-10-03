@@ -1,5 +1,4 @@
 FROM amazoncorretto:17.0.12-alpine
-RUN mkdir /app
-COPY backend/fileprocessing/target/*.jar /app/app.jar
-WORKDIR /app
-ENTRYPOINT [ "java","jar","/app/app.jar" ]
+COPY backend/fileprocessing/target/*.jar app.jar
+WORKDIR /
+ENTRYPOINT [ "java","jar","app.jar" ]
