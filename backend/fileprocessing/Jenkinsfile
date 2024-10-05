@@ -36,6 +36,13 @@ pipeline {
         }
       }
     }
+    stage("k8s delete deployment"){
+      steps{
+        script{
+          sh "kubectl delete -f ${ROOT_FOLDER}/deployment.yaml"
+        }
+      }
+    }
     stage("k8s dev deployment apply"){
       steps{
         script{
