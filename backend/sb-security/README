@@ -1,0 +1,7 @@
+### guide for security login with spring 3.3
+
+[springio] https://spring.io/guides/gs/securing-web
+
+### export env
+
+    export $(cat .env | xargs)

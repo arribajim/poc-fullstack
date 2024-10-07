@@ -1,3 +1,7 @@
+## install ng
+
+npm install -g @angular/cli
+
 # AngularFileUpload
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.15.
@@ -31,3 +35,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## nvm use
 
 -> v20.17.0
+
+### export variables
+
+    export $(cat .env | xargs)

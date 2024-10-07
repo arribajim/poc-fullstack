@@ -4,5 +4,5 @@ export interface Environment {
 }
 
 export const environment = {
-  apiUrl: 'http://localhost:8080',
+  apiUrl: '${API_URL}',
 };
