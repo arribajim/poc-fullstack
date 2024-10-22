@@ -1,5 +1,6 @@
 package com.example.fileprocessing.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -19,6 +20,9 @@ import java.util.stream.Collectors;
 @Service
 public class FileProcessingServiceImpl implements FileProcessingService {
 
+    @Autowired
+    private NotificationService notificationService;
+
     @Value("${filePath}")
     private String basePath;
 
@@ -37,12 +41,15 @@ public class FileProcessingServiceImpl implements FileProcessingService {
         try {
             log.info("Creating file "+ path.getFileName());
             Files.copy(multipartFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+            notificationService.sendLinkForFillForm(multipartFile.getName());
             return "CREATED";
         } catch (Exception e) {
             log.error("NOT CREATED "+ e.getMessage(),e);
         }
         return "FAILED";
     }
+
+   
 
     @Override
     public Resource downloadFile(String fileName) {
